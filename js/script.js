@@ -5,15 +5,27 @@ var rQuote;
 var str = '';
 var rgbColor;
 var html ='';
+//timer to change quote
+var timeoutID = window.setInterval(printQuote, 10000);
+var count = 0;
 
-function getRandomQuote(){
-	return quotes[Math.floor(Math.random() * quotes.length)];
+//iterate over array to return quote
+//return random quote after previous loop is finished
+function getRandomQuote(rQuote){
+	//display all quotes from array
+	while(count<quotes.length){
+		return quotes[count];
+	}
+	do{
+		var random = quotes[Math.floor(Math.random() * quotes.length)]
+	}while(rQuote == random);
+	return random;
 }
-
+//return random number for color
 function rgbColor(){
 	return Math.floor(Math.random() * 256)	
 }
-
+//create random color
 function randomColor(){
 	var color = 'rgb(';
 	color += rgbColor() + ',';
@@ -22,9 +34,11 @@ function randomColor(){
 	return color;
 }
 
+//print formated quote
+//change background color
 function printQuote(){
-	rQuote = getRandomQuote();
-	//document.write(rQuote.quote);
+	rQuote = getRandomQuote(rQuote);
+	count+=1;
 	str = '<p class = "quote">' + rQuote.quote + '</p>'; 
 	str +='<p class="source">' + rQuote.source;
 	if(rQuote.hasOwnProperty('citation')){
@@ -34,7 +48,7 @@ function printQuote(){
 		str+='<span class="year">' + rQuote.year + '</span>';
 	}
 	str += '</p>';
-	 //'<span class ="citation">' + rQuote.citation + '</span>';
+
 	document.getElementById('quote-box').innerHTML = str;
 	document.body.style.backgroundColor = randomColor();
 }
