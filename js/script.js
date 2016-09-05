@@ -3,8 +3,23 @@
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 var rQuote;
 var str = '';
+var rgbColor;
+var html ='';
+
 function getRandomQuote(){
 	return quotes[Math.floor(Math.random() * quotes.length)];
+}
+
+function rgbColor(){
+	return Math.floor(Math.random() * 256)	
+}
+
+function randomColor(){
+	var color = 'rgb(';
+	color += rgbColor() + ',';
+	color += rgbColor() + ',';
+	color += rgbColor() + ')';
+	return color;
 }
 
 function printQuote(){
@@ -21,4 +36,9 @@ function printQuote(){
 	str += '</p>';
 	 //'<span class ="citation">' + rQuote.citation + '</span>';
 	document.getElementById('quote-box').innerHTML = str;
+	document.body.style.backgroundColor = randomColor();
 }
+
+
+
+
