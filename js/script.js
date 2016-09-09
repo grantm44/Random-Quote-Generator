@@ -10,8 +10,8 @@ var timeoutID = window.setInterval(printQuote, 10000);
 var count = 0;
 var random;
 var copy = quotes.slice(0);
-//iterate over array to return quote
-//return random quote after previous loop is finished
+
+//return random quote from array without repeating 
 function getRandomQuote(){
 	if(copy.length < 1){
 		copy = quotes.slice(0);
