@@ -9,12 +9,12 @@ var html ='';
 var timeoutID = window.setInterval(printQuote, 10000);
 var count = 0;
 var random;
-var copy = quotes.splice(0);
+var copy = quotes.slice(0);
 //iterate over array to return quote
 //return random quote after previous loop is finished
 function getRandomQuote(){
 	if(copy.length < 1){
-		copy = quotes.splice(0);
+		copy = quotes.slice(0);
 	}
 	var index = Math.floor(Math.random() * copy.length);
 	var hold = copy[index];
