@@ -8,22 +8,23 @@ var html ='';
 //timer to change quote
 var timeoutID = window.setInterval(printQuote, 10000);
 var count = 0;
-
+var random;
+var copy = quotes.splice(0);
 //iterate over array to return quote
 //return random quote after previous loop is finished
-function getRandomQuote(rQuote){
-	//display all quotes from array
-	while(count<quotes.length){
-		return quotes[count];
+function getRandomQuote(){
+	if(copy.length < 1){
+		copy = quotes.splice(0);
 	}
-	do{
-		var random = quotes[Math.floor(Math.random() * quotes.length)]
-	}while(rQuote == random);
-	return random;
+	var index = Math.floor(Math.random() * copy.length);
+	var hold = copy[index];
+	copy.splice(index, 1);
+	return hold;
 }
+
 //return random number for color
 function rgbColor(){
-	return Math.floor(Math.random() * 256)	
+	return Math.floor(Math.random() * 256);	
 }
 //create random color
 function randomColor(){
@@ -37,7 +38,7 @@ function randomColor(){
 //print formated quote
 //change background color
 function printQuote(){
-	rQuote = getRandomQuote(rQuote);
+	rQuote = getRandomQuote();
 	count+=1;
 	str = '<p class = "quote">' + rQuote.quote + '</p>'; 
 	str +='<p class="source">' + rQuote.source;
