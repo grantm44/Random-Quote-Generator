@@ -4,10 +4,10 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 var rQuote;
 var str = '';
 var rgbColor;
-var html ='';
+
 //timer to change quote
-var timeoutID = window.setInterval(printQuote, 10000);
-var count = 0;
+var timeoutID; 
+
 var random;
 var copy = quotes.slice(0);
 
@@ -39,7 +39,8 @@ function randomColor(){
 //change background color
 function printQuote(){
 	rQuote = getRandomQuote();
-	count+=1;
+	clearInterval(timeoutID);
+	timeoutID = window.setInterval(printQuote, 10000);
 	str = '<p class = "quote">' + rQuote.quote + '</p>'; 
 	str +='<p class="source">' + rQuote.source;
 	if(rQuote.hasOwnProperty('citation')){
