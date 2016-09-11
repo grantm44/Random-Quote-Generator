@@ -4,11 +4,7 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 var rQuote;
 var str = '';
 var rgbColor;
-
-//timer to change quote
 var timeoutID; 
-
-var random;
 var copy = quotes.slice(0);
 
 //return random quote from array without repeating 
